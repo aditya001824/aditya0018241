@@ -1,0 +1,96 @@
+detection:
+  # Anomaly detection algorithms
+  algorithms:
+    - name: "IsolationForest"
+      enabled: true
+      params:
+        contamination: 0.1
+        random_state: 42
+    - name: "LOF"
+      enabled: true
+      params:
+        n_neighbors: 20
+        contamination: 0.1
+    - name: "COPOD"
+      enabled: true
+      params:
+        contamination: 0.1
+  
+  # Time series feature extraction
+  tsfresh:
+    enabled: true
+    default_fc_parameters: "efficient"
+    
+  # UEBA settings
+  ueba:
+    enabled: true
+    baseline_days: 30
+    peer_group_analysis: true
+    
+correlation:
+  # Correlation rules
+  time_window_seconds: 300
+  min_correlation_score: 0.6
+  max_related_alerts: 10
+  
+  # Incident grouping
+  grouping_rules:
+    - name: "Same Source IP"
+      field: "source_ip"
+      weight: 0.8
+    - name: "Same Destination IP"
+      field: "dest_ip"
+      weight: 0.7
+    - name: "Same User"
+      field: "user"
+      weight: 0.9
+    - name: "Similar Attack Type"
+      field: "attack_type"
+      weight: 0.85
+
+playbook:
+  # LLM settings for playbook generation
+  llm:
+    provider: "ollama"
+    model: "llama2"
+    temperature: 0.3
+    max_tokens: 2000
+    
+  # Playbook templates
+  templates_dir: "config/playbook_templates"
+  
+  # Response actions
+  severity_levels:
+    critical: 
+      auto_execute: false
+      require_approval: true
+    high:
+      auto_execute: false
+      require_approval: true
+    medium:
+      auto_execute: false
+      require_approval: false
+    low:
+      auto_execute: false
+      require_approval: false
+
+ingestion:
+  # Supported log formats
+  formats:
+    - siem
+    - edr
+    - firewall
+    - ids
+    - proxy
+    - authentication
+  
+  # Parsers
+  parsers:
+    syslog:
+      enabled: true
+    json:
+      enabled: true
+    csv:
+      enabled: true
+    cef:
+      enabled: true
