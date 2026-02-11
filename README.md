@@ -11,12 +11,22 @@ This system provides a comprehensive solution for automated cyber incident respo
 - **Automated Playbook Generation**: LLM-powered incident response playbooks
 - **Zero External Dependencies**: Fully local operation with no data leakage
 
+## 🔒 Security
+
+**All dependencies have been updated to patched versions** to address known vulnerabilities. See [SECURITY_ADVISORY.md](SECURITY_ADVISORY.md) for details.
+
+✅ FastAPI 0.109.1 (ReDoS fix)
+✅ LangChain Community 0.3.27 (XXE, SSRF, deserialization fixes)
+✅ Python-multipart 0.0.22 (DoS, file write fixes)
+✅ PyTorch 2.6.0 (RCE, buffer overflow fixes)
+✅ Transformers 4.48.0 (deserialization fix)
+
 ## 🚀 Quick Start
 
 ### Installation
 
 ```bash
-# Install dependencies
+# Install dependencies (with security patches)
 pip install -r requirements.txt
 
 # Install the package
