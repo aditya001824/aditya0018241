@@ -35,6 +35,11 @@
 - Build real cybersecurity tools
 - Contribute to open source
 - Become an AI security engineer
+- ## 📊 GitHub Stats
+
+![Aditya's GitHub stats](https://github-readme-stats.vercel.app/api?username=aditya0018241&show_icons=true&theme=radical)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=aditya0018241&layout=compact&theme=radical)
 
 ---
 
